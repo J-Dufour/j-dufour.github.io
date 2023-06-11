@@ -1,0 +1,27 @@
+.purple-primary {
+    color: #6d1b99;
+    border-color: #6d1b99 !important;
+}
+.purple-primary .btn{
+    color: #6d1b99;
+    border-color: #6d1b99 !important;
+}
+
+.purple-primary .btn:hover{
+    color: white;
+    background-color: #6d1b99;
+}
+
+a.purple-primary:link {
+    color: #6d1b99 !important;
+}
+
+.purple-border {
+    border-color: #6d1b99 !important;
+}
+
+.purple-secondary {
+    color: white;
+    border-color: white !important;
+    background-color: #6d1b99;
+}
