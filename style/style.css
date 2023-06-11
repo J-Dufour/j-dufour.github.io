@@ -2,14 +2,20 @@
     color: #6d1b99;
     border-color: #6d1b99 !important;
 }
-.purple-primary .btn{
-    color: #6d1b99;
-    border-color: #6d1b99 !important;
+
+.purple-primary.btn:hover {
+    color: white !important;
+    background-color: #6d1b99 !important;
 }
 
-.purple-primary .btn:hover{
-    color: white;
-    background-color: #6d1b99;
+.purple-primary.btn:active{
+    color: white !important;
+    background-color: #6d1b99 !important;
+}
+
+.btn-check:checked + .btn{
+    color: white !important;
+    background-color: #6d1b99 !important;
 }
 
 a.purple-primary:link {
@@ -24,4 +30,14 @@ a.purple-primary:link {
     color: white;
     border-color: white !important;
     background-color: #6d1b99;
+}
+.purple-secondary .btn:hover {
+    color: #6d1b99 !important;
+}
+
+.overlay {
+    position:absolute;
+    top:0;
+    left: 0;
+    z-index: 10;
 }
