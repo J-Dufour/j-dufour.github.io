@@ -122,7 +122,7 @@ function updatePage() {
         document.getElementById("staffLabel").innerHTML =  "Staff Member: " + selStaffMember;
         
         document.getElementById("costLabel").innerHTML =  "Cost: " + (selPetType == 0 ? catCosts[selService] : dogCosts[selService]);
-        document.getElementById("dateTimeLabel").innerHTML = "Date and Time: " + selTime + " at " + selDate;
+        document.getElementById("dateTimeLabel").innerHTML = "Date and Time: " + selTime + " on " + selDate;
 
     }
 
