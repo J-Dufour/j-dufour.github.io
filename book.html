@@ -37,12 +37,12 @@
     <div class="container pt-4">
         <div class="row">
             <div class="col col-2 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="#6d1b99" class="i bi-1-circle"
+                <svg id="circ1" xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="#6d1b99" class="i bi-1-circle"
                     viewBox="0 0 16 16">
                     <path
                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM9.283 4.002V12H7.971V5.338h-.065L6.072 6.656V5.385l1.899-1.383h1.312Z" />
                 </svg>
-                <p class="purple-primary">Choose Service</p>
+                <p id="top1" class="purple-primary">Choose Service</p>
             </div>
             <div class="col col-3 text-center">
                 <svg height="32" width="96">
@@ -50,12 +50,12 @@
                 </svg>
             </div>
             <div class="col col-2 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="currentColor"
+                <svg id="circ2" xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="currentColor"
                     class="bi bi-2-circle" viewBox="0 0 16 16">
                     <path
                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Zm15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM6.646 6.24v.07H5.375v-.064c0-1.213.879-2.402 2.637-2.402 1.582 0 2.613.949 2.613 2.215 0 1.002-.6 1.667-1.287 2.43l-.096.107-1.974 2.22v.077h3.498V12H5.422v-.832l2.97-3.293c.434-.475.903-1.008.903-1.705 0-.744-.557-1.236-1.313-1.236-.843 0-1.336.615-1.336 1.306Z" />
                 </svg>
-                <p>Choose Staff</p>
+                <p id="top2">Choose Staff</p>
             </div>
             <div class="col col-3 text-center">
                 <svg height="32" width="96">
@@ -63,13 +63,13 @@
                 </svg>
             </div>
             <div class="col col-2 text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="currentColor"
+                <svg id="circ3" xmlns="http://www.w3.org/2000/svg" width="48" height="32" fill="currentColor"
                     class="bi bi-3-circle" viewBox="0 0 16 16">
                     <path
                         d="M7.918 8.414h-.879V7.342h.838c.78 0 1.348-.522 1.342-1.237 0-.709-.563-1.195-1.348-1.195-.79 0-1.312.498-1.348 1.055H5.275c.036-1.137.95-2.115 2.625-2.121 1.594-.012 2.608.885 2.637 2.062.023 1.137-.885 1.776-1.482 1.875v.07c.703.07 1.71.64 1.734 1.917.024 1.459-1.277 2.396-2.93 2.396-1.705 0-2.707-.967-2.754-2.144H6.33c.059.597.68 1.06 1.541 1.066.973.006 1.6-.563 1.588-1.354-.006-.779-.621-1.318-1.541-1.318Z" />
                     <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0ZM1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8Z" />
                 </svg>
-                <p>Confirm</p>
+                <p id="top3" >Confirm</p>
             </div>
         </div>
     </div>
@@ -82,27 +82,27 @@
                             <div class="col col-6 border-end text-center">
                                 <h4 class="purple-primary">Choose a Pet Size</h4>
                                 <div class="btn-group-vertical pt-4">
-                                    <input type="radio" class="btn-check" name="petRad" id="petRad1" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="petRad" id="petRad1" autocomplete="off" value="0" checked>
                                     <label class="btn purple-primary" for="petRad1">Cat</label>
-                                    <input type="radio" class="btn-check" name="petRad" id="petRad2" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="petRad" id="petRad2" autocomplete="off" value="1">
                                     <label class="btn purple-primary" for="petRad2">Dog (0 lbs - 20 lbs)</label>
-                                    <input type="radio" class="btn-check" name="petRad" id="petRad3" autocomplete="off">
+                                    <input type="radio" class="btn-check" name="petRad" id="petRad3" autocomplete="off" value="2">
                                     <label class="btn purple-primary" for="petRad3">Dog (21 lbs - 60 lbs)</label>
-                                    <input type="radio" class="btn-check" name="petRad" id="petRad4" autocomplete="off">
-                                    <label class="btn purple-primary" for="petRad4">Dog (61 and up)</label>
+                                    <input type="radio" class="btn-check" name="petRad" id="petRad4" autocomplete="off" value="3">
+                                    <label class="btn purple-primary" for="petRad4">Dog (61 lbs and up)</label>
                                 </div>
                             </div>
                             <div class="col col-6 border-start text-center">
                                 <h4 class="purple-primary">Choose a Service</h4>
                                 <div class="btn-group-vertical pt-4">
                                     <input type="radio" class="btn-check" name="servRad" id="servRad1"
-                                        autocomplete="off">
+                                        autocomplete="off" value="0" checked>
                                     <label class="btn purple-primary" for="servRad1">Basic Cleaning</label>
                                     <input type="radio" class="btn-check" name="servRad" id="servRad2"
-                                        autocomplete="off">
+                                        autocomplete="off" value="1">
                                     <label class="btn purple-primary" for="servRad2">Deluxe Cleaning</label>
                                     <input type="radio" class="btn-check" name="servRad" id="servRad3"
-                                        autocomplete="off">
+                                        autocomplete="off" value="2">
                                     <label class="btn purple-primary" for="servRad3">Cleaning + Trim</label>
                                 </div>
                             </div>
@@ -115,12 +115,12 @@
                             <div class="col col-6 border-end text-center">
                                 <h4 class="purple-primary">Choose Staff Member</h4>
                                 <div class="d-flex justify-content-center pt-4">
-                                    <select class="form-select w-50 ">
-                                        <option selected>Choose Staff...</option>
-                                        <option value="1">Nadia Bernard</option>
-                                        <option value="2">Edgardo Davila</option>
-                                        <option value="3">Elvin Grant</option>
-                                        <option value="4">Sharmila Kaya</option>
+                                    <select id="staffSelect" class="form-select w-50 ">
+                                        <option selected="true">Choose Staff...</option>
+                                        <option value="Nadia Bernard">Nadia Bernard</option>
+                                        <option value="Edgardo Davila">Edgardo Davila</option>
+                                        <option value="Elvin Grant">Elvin Grant</option>
+                                        <option value="Sharmila Kaya">Sharmila Kaya</option>
                                     </select>
                                 </div>
                             </div>
@@ -182,10 +182,11 @@
                             <div class="col col-6 border-start text-center">
                                 <h4 class="purple-primary">Appointment Details</h4>
                                 <div class="container text-start mt-4 ms-4">
-                                    <p id="sizeLabel">Pet Size:</p>
+                                    <p id="sizeLabel">Pet Type:</p>
                                     <p id="serviceLabel">Service:</p>
                                     <p id="staffLabel">Staff:</p>
                                     <p id="costLabel">Cost:</p>
+                                    <p id="dateTimeLabel">Time:</p>
                                 </div>
                             </div>
                         </div>
@@ -195,7 +196,7 @@
                 <div class="carousel-item">
                     <div class="container text-center">
                        <h1 class="purple-primary">We're all set!</h1>
-                       <p>Your appointment with X on Y at Z has been booked. An email confirmation has been sent.</p>
+                       <p id="confirmationText">Your appointment with X on Y at Z has been booked. An email confirmation has been sent.</p>
                     </div>
                 </div>
             </div>
@@ -205,8 +206,8 @@
     <div class="container">
         <div class="row">
             <div class="col col-6 text-end">
-                <button class="btn purple-primary rounded-0 w-25" type="button" id="prevBtn" data-bs-target="#bookCarousel"
-                data-bs-slide="next">Previous</button>
+                <button class="btn purple-primary rounded-0 w-25" type="button" id="prevBtn" onclick="prevClick()" data-bs-target="#bookCarousel"
+                data-bs-slide="prev">Previous</button>
             </div>
             <div class="col col-6 text-start">
                 <button class="btn purple-primary rounded-0 w-25" type="button" id="nextBtn" onclick="nextClick()" data-bs-target="#bookCarousel"
