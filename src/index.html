@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+  <head>
+    <link href="/style.css" rel="stylesheet" />
+    <script type="module" src="init.ts"></script>
+  </head>
+  <body>
+    <hgroup class="px-8 py-16">
+      <h1 class="mb-4 text-6xl">Jeremy <strong>Dufour</strong></h1>
+      <p class="text-xl text-gray-600">Software Engineer</p>
+    </hgroup>
+    <main class="py-8 mb-2 flex flex-col gap-8 text-white bg-sky-800">
+      <section class="px-8">
+        <h2 class="text-4xl font-bold">About me</h2>
+        <p>I'm Jeremy, and I develop software that interests me.</p>
+      </section>
+      <section>
+        <hgroup class="px-8 mb-8">
+          <h2 class="text-4xl font-bold">Portfolio</h2>
+        </hgroup>
+
+        <a href="/glyphimg/" class="cursor-pointer">
+          <div
+            class="relative w-full h-64 flex group"
+            _="
+              init 
+                set #bwd_vid's currentTime to #bwd_vid's duration 
+              end
+              on mouseenter set #fwd_vid's currentTime to #fwd_vid's duration - #bwd_vid's currentTime
+                then wait 100 ms
+                then remove .opacity-0 from #fwd_vid
+                then call #fwd_vid.play()
+
+              on mouseleave set #bwd_vid's currentTime to #bwd_vid's duration - #fwd_vid's currentTime 
+                then wait 100 ms
+                then add .opacity-0 to #fwd_vid
+                then call #bwd_vid.play()
+          "
+          >
+            <video
+              _="init set my playbackRate to 3"
+              id="fwd_vid"
+              class="absolute size-full object-cover object-left z-1"
+              preload="auto"
+              muted
+            >
+              <source src="new_hd_test.webm" type="video/webm" />
+            </video>
+            <video
+              _="init set my playbackRate to 5"
+              id="bwd_vid"
+              class="absolute size-full object-cover object-left z-0"
+              preload="auto"
+              muted
+            >
+              <source src="new_hd_test_rev.webm" type="video/webm" />
+            </video>
+            <div class="grow flex flex-col justify-center items-center z-10">
+              <h3
+                class="text-6xl font-black group-hover:text-shadow-lg group-hover:-translate-y-1 transition duration-500"
+              >
+                Glyphimg
+              </h3>
+              <p>Turn images into Unicode glyphs</p>
+            </div>
+          </div>
+        </a>
+        <div class="h-64 flex group">
+          <image
+            src="/keys.jpg"
+            class="size-full basis-1/2 object-cover group-hover:brightness-50 transition duration-500"
+          />
+          <div class="basis-1/2 flex flex-col justify-center items-center z-10">
+            <h3
+              class="text-6xl font-black transition duration-500 group-hover:text-shadow-lg group-hover:-translate-y-1"
+            >
+              Visage
+            </h3>
+            <p>Use your head to move the cursor</p>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="text-center text-gray-500">&copy; 2025 Jeremy Dufour</footer>
+  </body>
+</html>
