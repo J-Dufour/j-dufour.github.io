@@ -3,6 +3,7 @@
   <head>
     <link href="/style.css" rel="stylesheet" />
     <script type="module" src="init.ts"></script>
+    <script type="module" src="cursor.ts"></script>
   </head>
   <body>
     <hgroup class="px-8 py-16">
@@ -65,20 +66,52 @@
             </div>
           </div>
         </a>
-        <div class="h-64 flex group">
-          <image
-            src="/keys.jpg"
-            class="size-full basis-1/2 object-cover group-hover:brightness-50 transition duration-500"
-          />
-          <div class="basis-1/2 flex flex-col justify-center items-center z-10">
-            <h3
-              class="text-6xl font-black transition duration-500 group-hover:text-shadow-lg group-hover:-translate-y-1"
+        <a href="/visage/" class="cursor-pointer">
+          <div
+            _="
+              init call stopCursor(#g2)
+              on mouseenter call startCursor(#g2)
+              on mouseleave call stopCursor(#g2)
+            "
+            class="relative w-full h-64 bg-white flex group overflow-hidden"
+          >
+            <svg id="cursor_vid" class="absolute size-full" preload="auto">
+              <g id="g2" class="transition duration-350 ease-linear">
+                <path
+                  style="
+                    fill: #000000;
+                    fill-opacity: 1;
+                    stroke: #000000;
+                    stroke-width: 2;
+                    stroke-dasharray: none;
+                  "
+                  d="M 9.26,3.64 18.71,40.27 26.51,26.68 42.02,24.85 Z"
+                  id="path1"
+                />
+                <path
+                  style="
+                    fill: none;
+                    stroke: #000000;
+                    stroke-width: 6;
+                    stroke-dasharray: none;
+                  "
+                  d="m 26.42,26.96 12.94,17.71"
+                  id="path2"
+                />
+              </g>
+            </svg>
+            <div
+              class="grow flex flex-col justify-center items-center z-10 text-black"
             >
-              Visage
-            </h3>
-            <p>Use your head to move the cursor</p>
+              <h3
+                class="text-6xl font-black group-hover:text-shadow-lg group-hover:-translate-y-1 transition duration-500"
+              >
+                Visage
+              </h3>
+              <p>Control your cursor with your face!</p>
+            </div>
           </div>
-        </div>
+        </a>
       </section>
     </main>
     <footer class="text-center text-gray-500">&copy; 2025 Jeremy Dufour</footer>
