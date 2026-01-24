@@ -15,7 +15,7 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "src/index.html"),
         glyphimg: resolve(__dirname, "src/glyphimg/index.html"),
-        visage: resolve(__dirname, "src/visage/index.html"),
+        telepointer: resolve(__dirname, "src/telepointer/index.html"),
       },
     },
   },
