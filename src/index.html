@@ -1,29 +1,144 @@
 <!doctype html>
-<html>
+<html class="scroll-smooth">
   <head>
     <link href="/style.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/lightfair.min.css"
+    />
     <script type="module" src="init.ts"></script>
-    <script type="module" src="cursor.ts"></script>
+    <script type="module" src="index.ts"></script>
+    <script type="text/hyperscript">
+      def startSnippets()
+        call resetAvailableLangs() then
+        call generateCodeSnippets(me) then repeat for elem in it
+          append elem to me
+          wait 100ms
+        end
+      end
+    </script>
   </head>
-  <body>
-    <hgroup class="px-8 py-16">
-      <h1 class="mb-4 text-6xl">Jeremy <strong>Dufour</strong></h1>
-      <p class="text-xl text-gray-600">Software Engineer</p>
+  <body
+    _="
+    init set :deployed to false end
+    on intoNav send kill to .code-snippet then set :deployed to false end
+    on outOfNav if not :deployed call startSnippets() then set :deployed to true end end
+    "
+    class="scroll-listener"
+  >
+    <hgroup class="fixed w-192 transition-all duration-2000 group z-20 top-0">
+      <h1
+        _="
+          on intoNav add .top-navbar then remove .text-center 
+          on outOfNav remove .top-navbar then wait 500ms then add .text-center
+        "
+        id="nav-title"
+        class="scroll-listener text-9xl break-all absolute left-[50vw] top-[33vh] -translate-1/2 transition-all duration-1000 w-128 ease-in-out"
+      >
+        Jeremy
+        <strong>Dufour</strong>
+        <p class="text-xl text-gray-600 transition-all duration-400">
+          Software Engineer
+        </p>
+      </h1>
+      <svg
+        _="
+        on intoNav transition *opacity to 0 
+        on outOfNav wait 10s then transition *opacity to 1
+        "
+        class="scroll-listener pointer-events-none absolute left-[50vw] top-[90vh] -translate-1/2 w-32 h-32 opacity-0"
+        viewBox="0 0 180 180"
+      >
+        <g class="transition animate-bounce duration-2000">
+          <path
+            id="path1-3"
+            style="
+              fill: none;
+              stroke: #a0a0a0;
+              stroke-width: 7.22312;
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              stroke-dasharray: none;
+              stroke-opacity: 1;
+              paint-order: stroke fill markers;
+            "
+            d="M 37.011541,89.885174 81.425393,123.45993 125.83925,89.885174"
+          />
+          <use
+            x="0"
+            y="0"
+            xlink:href="#path1-3"
+            id="use1"
+            transform="translate(0,42.298906)"
+          />
+        </g>
+      </svg>
     </hgroup>
-    <main class="py-8 mb-2 flex flex-col gap-8 text-white bg-sky-800">
-      <section class="px-8">
-        <h2 class="text-4xl font-bold">About me</h2>
-        <p>I'm Jeremy, and I develop software that interests me.</p>
+    <navbar
+      _="
+      on intoNav add .h-20 then remove .h-0
+      on outOfNav remove .h-20 then add .h-0
+      "
+      class="scroll-listener fixed w-full top-0 bg-white h-20 flex items-center justify-end z-10 pe-24 transition-all overflow-hidden"
+    >
+      <a
+        _="
+          on intoNav remove .-translate-y-full
+          on outOfNav add .-translate-y-full
+        "
+        class="scroll-listener hover:underline transition duration-500 ease-out h-full flex items-center w-24 justify-center -translate-y-full"
+        href="#about"
+        >About</a
+      >
+      <a
+        _="
+          on intoNav wait 100ms then remove .-translate-y-full
+          on outOfNav wait 100ms then add .-translate-y-full
+        "
+        class="scroll-listener hover:underline transition duration-500 ease-out h-full flex items-center w-24 justify-center -translate-y-full"
+        href="#projects"
+        >Projects</a
+      >
+    </navbar>
+    <main
+      _="
+          on intersection(intersecting) having threshold 0.1
+          if intersecting send intoNav to .scroll-listener then log 'in nav'
+          else send outOfNav to .scroll-listener then log 'out nav'
+        "
+      class="py-8 flex flex-col text-white bg-sky-800 mt-[100vh]"
+    >
+      <section class="px-8 py-8">
+        <h2 id="about" class="scroll-mt-24 text-4xl font-bold">About me</h2>
+        <div class="flex items-center my-4">
+          <div class="me-8 size-64 rounded-full overflow-hidden flex-none">
+            <img class="object-cover object-center" src="profile-pic.jpg" />
+          </div>
+          <div class="text-xl">
+            <p>
+              I'm Jeremy, and I develop software. I'm always looking for new
+              things to learn and challenges to overcome! I'm particularly
+              experienced in web development, but I also work on a variety of
+              projects in my free time.
+            </p>
+
+            <br />
+            <p>Check out some of my latest projects below!</p>
+          </div>
+        </div>
       </section>
       <section>
         <hgroup class="px-8 mb-8">
-          <h2 class="text-4xl font-bold">Portfolio</h2>
+          <h2 id="projects" class="scroll-mt-24 text-4xl font-bold">
+            Things I've made
+          </h2>
         </hgroup>
 
-        <a href="/glyphimg/" class="cursor-pointer">
-          <div
-            class="relative w-full h-64 flex group"
-            _="
+        <div class="flex flex-col w-full">
+          <a href="/glyphimg/" class="cursor-pointer grow">
+            <div
+              class="relative w-full h-128 full flex group"
+              _="
               init 
                 set #bwd_vid's currentTime to #bwd_vid's duration 
               end
@@ -36,82 +151,83 @@
                 then wait 100 ms
                 then add .opacity-0 to #fwd_vid
                 then call #bwd_vid.play()
-          "
-          >
-            <video
-              _="init set my playbackRate to 3"
-              id="fwd_vid"
-              class="absolute size-full object-cover object-left z-1"
-              preload="auto"
-              muted
+              "
             >
-              <source src="new_hd_test.webm" type="video/webm" />
-            </video>
-            <video
-              _="init set my playbackRate to 5"
-              id="bwd_vid"
-              class="absolute size-full object-cover object-left z-0"
-              preload="auto"
-              muted
-            >
-              <source src="new_hd_test_rev.webm" type="video/webm" />
-            </video>
-            <div class="grow flex flex-col justify-center items-center z-10">
-              <h3
-                class="text-6xl font-black group-hover:text-shadow-lg group-hover:-translate-y-1 transition duration-500"
+              <video
+                _="init set my playbackRate to 3"
+                id="fwd_vid"
+                class="absolute size-full object-cover object-left z-1"
+                preload="auto"
+                muted
               >
-                Glyphimg
-              </h3>
-              <p>Turn images into Unicode glyphs</p>
+                <source src="new_hd_test.webm" type="video/webm" />
+              </video>
+              <video
+                _="init set my playbackRate to 5"
+                id="bwd_vid"
+                class="absolute size-full object-cover object-left z-0"
+                preload="auto"
+                muted
+              >
+                <source src="new_hd_test_rev.webm" type="video/webm" />
+              </video>
+              <div class="grow flex flex-col justify-center items-center z-10">
+                <h3
+                  class="text-6xl font-black group-hover:text-shadow-lg group-hover:-translate-y-1 transition duration-500"
+                >
+                  Glyphimg
+                </h3>
+                <p>Turn images into Unicode glyphs</p>
+              </div>
             </div>
-          </div>
-        </a>
-        <a href="/telepointer/" class="cursor-pointer">
-          <div
-            _="
+          </a>
+          <a href="/telepointer/" class="cursor-pointer grow">
+            <div
+              _="
               init call stopCursor(#g2)
               on mouseenter call startCursor(#g2)
               on mouseleave call stopCursor(#g2)
             "
-            class="relative w-full h-64 bg-white flex group overflow-hidden"
-          >
-            <svg id="cursor_vid" class="absolute size-full" preload="auto">
-              <g id="g2" class="transition duration-350 ease-linear">
-                <path
-                  style="
-                    fill: #000000;
-                    fill-opacity: 1;
-                    stroke: #000000;
-                    stroke-width: 2;
-                    stroke-dasharray: none;
-                  "
-                  d="M 9.26,3.64 18.71,40.27 26.51,26.68 42.02,24.85 Z"
-                  id="path1"
-                />
-                <path
-                  style="
-                    fill: none;
-                    stroke: #000000;
-                    stroke-width: 6;
-                    stroke-dasharray: none;
-                  "
-                  d="m 26.42,26.96 12.94,17.71"
-                  id="path2"
-                />
-              </g>
-            </svg>
-            <div
-              class="grow flex flex-col justify-center items-center z-10 text-black"
+              class="relative w-full h-128 bg-white flex group overflow-hidden"
             >
-              <h3
-                class="text-6xl font-black group-hover:text-shadow-lg group-hover:-translate-y-1 transition duration-500"
+              <svg id="cursor_vid" class="absolute size-full" preload="auto">
+                <g id="g2" class="transition duration-350 ease-linear">
+                  <path
+                    style="
+                      fill: #000000;
+                      fill-opacity: 1;
+                      stroke: #000000;
+                      stroke-width: 2;
+                      stroke-dasharray: none;
+                    "
+                    d="M 9.26,3.64 18.71,40.27 26.51,26.68 42.02,24.85 Z"
+                    id="path1"
+                  />
+                  <path
+                    style="
+                      fill: none;
+                      stroke: #000000;
+                      stroke-width: 6;
+                      stroke-dasharray: none;
+                    "
+                    d="m 26.42,26.96 12.94,17.71"
+                    id="path2"
+                  />
+                </g>
+              </svg>
+              <div
+                class="grow flex flex-col justify-center items-center z-10 text-black"
               >
-                Telepointer
-              </h3>
-              <p>Control your cursor with your face!</p>
+                <h3
+                  class="text-6xl font-black group-hover:text-shadow-lg group-hover:-translate-y-1 transition duration-500"
+                >
+                  Telepointer
+                </h3>
+                <p>Control your cursor with your face!</p>
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </div>
       </section>
     </main>
     <footer class="text-center text-gray-500">&copy; 2025 Jeremy Dufour</footer>

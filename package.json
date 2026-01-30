@@ -12,6 +12,7 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.1.18",
     "glyphimg": "0.1.5",
+    "highlight.js": "^11.11.1",
     "hyperscript.org": "^0.9.14",
     "tailwindcss": "^4.1.18"
   }

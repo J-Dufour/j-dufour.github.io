@@ -74,3 +74,32 @@
   --depth: 0;
   --noise: 0;
 }
+
+.top-navbar {
+  font-size: var(--text-4xl);
+  line-height: var(--text-4xl--line-height);
+
+  text-align: start;
+  /* width: calc(var(--spacing) * 180); */
+  top: 0;
+  left: 0;
+  padding-top: calc(var(--spacing) * 2);
+  padding-left: calc(var(--spacing) * 4);
+  width: 100%;
+
+  translate: 0 0;
+}
+
+@theme {
+  --animate-sway: sway 8s ease-in-out infinite;
+
+  @keyframes sway {
+    0%,
+    100% {
+      translate: 0 -10%;
+    }
+    50% {
+      translate: 0 10%;
+    }
+  }
+}
