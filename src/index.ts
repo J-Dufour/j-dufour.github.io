@@ -147,10 +147,10 @@ const generateCodeSnip = (left: boolean, top: boolean): HTMLPreElement => {
     "absolute",
     "top-[50vh]",
     "left-[50vw]",
-    "w-64",
-    "md:w-128",
+    "w-56",
+    "lg:w-64",
     "h-48",
-    "md:h-96",
+    "lg:h-64",
     "perspective-distant",
     "transition-all",
     "transform-3d",
@@ -158,12 +158,13 @@ const generateCodeSnip = (left: boolean, top: boolean): HTMLPreElement => {
     "duration-6000",
     "ease-out",
     "code-snippet",
+    "overflow-visible",
   );
   codeSnip.setAttribute(
     "_",
     `\
 init transition 
-  *transform from 'scale(0%) translate(-50%, -50%)' to 'scale(100%) translate(-50%, -50%) translate(${left ? "-20" : "30"}vw, ${top ? "-30" : "30"}vh)' 
+  *transform from 'scale(0%) translate(-50%, -50%)' to 'scale(100%) translate(-50%, -50%) translate(${left ? "-30" : "30"}vw, ${top ? "-30" : "30"}vh)' 
   *opacity from 0% to 100%  
   using 'all 5s cubic-bezier(0, 1, 0, 1)'
 end
@@ -175,13 +176,16 @@ on kill  transition *opacity to 0 using 'all 1s ease' then settle then remove me
     left ? "-rotate-y-20" : "rotate-y-20",
     top ? "rotate-x-20" : "-rotate-x-20",
     "text-xs",
-    "md:text-lg",
+    "lg:text-lg",
+    "code-snippet",
+    "bg-transparent",
+    "overflow-visible!",
   );
   innerCode.setAttribute(
     "_",
     `\
 init wait random from [250ms, 750ms, 1.25s, 1.75s] then add .animate-sway to me then
-repeat forever 
+repeat until event kill 
   call getRandomGreeting(:lang) then set :read to it
   then set :lang to :read[0]
   then set :txt to :read[1]
